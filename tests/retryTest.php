@@ -1,7 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 use function Bluefrg\retry;
+use PHPUnit\Framework\TestCase;
 
-class retryTest extends PHPUnit_Framework_TestCase
+final class retryTest extends TestCase
 {
     public function testOne()
     {
@@ -41,7 +42,7 @@ class retryTest extends PHPUnit_Framework_TestCase
 
     public function testInvalidRetries()
     {
-        $this->expectException('PHPUnit_Framework_Error');
+        $this->expectException(\PHPUnit\Runner\ErrorException::class);
 
         retry(-555, function () {});
     }
